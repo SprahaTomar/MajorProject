@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agrigrow Invest</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <img src="./static/images/agrigrow logo.jpeg" alt="Website Logo" class="logo">
+    </div>
+    <h1>AgriGrow Invest</h1>
+    <p>Transforming agriculture through innovative financing solutions. <br> Empowering farmers and investors for a sustainable future.</p>
+    <div class="button-container">
+      <button id="adminBtn">Get Started as Admin</button>
+      <button id="investorBtn">Get Started as Investor</button>
+    </div>
+  </div>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const adminButton = document.getElementById("adminBtn");
+        const investorButton = document.getElementById("investorBtn");
+
+        adminButton.addEventListener("click", function () {
+            //document.getElementById("user_type").value = "farmer";
+            window.location.href = "/register?user_type=farmer"; // Redirect to register.html
+        });
+
+        investorButton.addEventListener("click", function () {
+            console.log("Investor button clicked");
+            //document.getElementById("user_type").value = "investor";
+            window.location.href = "/register?user_type=investor"; // Redirect to register.html
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const adminButton = document.querySelector(".button-container button:nth-of-type(1)");
+      const investorButton = document.querySelector(".button-container button:nth-of-type(2)");
+
+      adminButton.addEventListener("mouseenter", function () {
+        adminButton.style.backgroundColor = "white";
+        adminButton.style.color = "rgb(42, 167, 42)";
+      });
+
+      adminButton.addEventListener("mouseleave", function () {
+        adminButton.style.backgroundColor = "rgb(42, 167, 42)";
+        adminButton.style.color = "white";
+      });
+
+      investorButton.addEventListener("mouseenter", function () {
+        investorButton.style.backgroundColor = "white";
+        investorButton.style.color = "rgb(42, 167, 42)";
+      });
+
+      investorButton.addEventListener("mouseleave", function () {
+        investorButton.style.backgroundColor = "rgb(42, 167, 42)";
+        investorButton.style.color = "white";
+      });
+    });
+  </script>
+</body>
+</html>

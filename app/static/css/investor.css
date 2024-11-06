@@ -1,0 +1,182 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+    align-self: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  header {
+    background-color: #04b619;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .admin-text {
+    margin: 0 12px;
+    color: #fff;
+    line-height: 50px;
+  }
+  
+  nav.admin-functionalities {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav.admin-functionalities li {
+    margin-right: 10px;
+    display: inline-block;
+  }
+  
+  nav.admin-functionalities a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  main {
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  section {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Updated shadow for a slight lift */
+    background-color: #fff; /* Changed to white background */
+    padding: 20px; /* Added padding for content spacing */
+    width: 20%;
+  }
+  
+  .summary-container {
+    display: flex; /* Enables flexbox layout */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .total-invested {
+    background-color: #f0f0f0; /* Light grey background for the "Total Invested" box */
+    border-radius: 5px;
+    padding: 10px; /* Added padding for content spacing */
+    text-align: center; /* Centered text alignment */
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  .total-profit-share {
+    background-color: #f0f0f0; /* Light grey background for the "Total Profit Share" box */
+    border-radius: 5px;
+    padding: 10px; /* Added padding for content spacing */
+    text-align: center; /* Centered text alignment */
+    flex-grow: 0; /* Prevent horizontal expansion, keeps it on the right */
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  .total-profit-share {
+    background-color: #f0f0f0; /* Light grey background for the "Total Profit Share" box */
+    border-radius: 5px;
+    padding: 10px; /* Added padding for content spacing */
+    text-align: center; /* Centered text alignment */
+    flex-grow: 0; /* Prevent horizontal expansion, keeps it on the right */
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  .summary-container2 {
+    display: flex; /* Enables flexbox layout */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .total-wallet { /* Target all three sections */
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 5px;
+    padding: 10px 20px; /* Content padding + gap (optional) */
+    text-align: center;
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  .total-wallet { /* Target all three sections */
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 5px;
+    padding: 10px 20px; /* Content padding + gap (optional) */
+    text-align: center;
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  .total-wallet { /* Target all three sections */
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 5px;
+    padding: 10px 20px; /* Content padding + gap (optional) */
+    text-align: center;
+    box-sizing: border-box; /* Ensures margin calculation */
+  }
+  
+  h2 {
+    margin-bottom: 10px; /* Added margin for spacing below headings */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .summary-container3 {
+    display: flex; /* Enables flexbox layout */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  /*.projects{
+    width: 300px;
+    display: block;
+    border: 1px solid #ddd;
+  }*/
+  
+  table, th, td {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input, textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  

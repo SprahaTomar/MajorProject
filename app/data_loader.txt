@@ -1,0 +1,63 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from app import db  # Assuming db is your SQLAlchemy instance
+
+def load_data():
+    # Query projects and investments data from the database
+    print("data is being loaded")
+    projects_data = pd.read_sql("SELECT project_name, investment_goal, current_investment FROM projects", db.engine)
+    investments_data = pd.read_sql("SELECT projects.project_name, investments.investor_id, SUM(investments.amount) AS total_investment "
+                                    "FROM investments "
+                                    "JOIN projects ON investments.project_id = projects.id "
+                                    "GROUP BY projects.project_name, investments.investor_id", db.engine)
+
+    # Process projects data
+    project_names = projects_data['project_name']
+    investment_goals = projects_data['investment_goal']
+    current_investments = projects_data['current_investment']
+
+    # Process investments data
+    investors = ['Investor1', 'Investor2', 'Investor3']  # Example list of investors
+    investors_investment = []  # List to store investments per investor
+    for investor in investors:
+        investments_per_investor = investments_data[investments_data['investor_id'] == investor]
+        investor_total_investment = investments_per_investor['total_investment']
+        investors_investment.append(investor_total_investment)
+
+    # Generate charts
+    create_bar_chart(project_names, investment_goals)
+    create_stacked_bar_chart(project_names, investors_investment, investors)
+
+def create_bar_chart(project_names, investment_goals):
+    plt.figure(figsize=(10, 6))
+    plt.bar(project_names, investment_goals, color='blue')
+    plt.xlabel('Project Name')
+    plt.ylabel('Investment Goal')
+    plt.title('Bar Chart of Investment Goals')
+    plt.xticks(rotation=45)
+    plt.savefig('bar_chart.png')  # Save the chart to a file
+    plt.close()  # Close the plot to free memory
+
+def create_stacked_bar_chart(project_names, investors_investment, investors):
+    plt.figure(figsize=(10, 6))
+    bottom = [0] * len(project_names)
+    for investor_investment, investor in zip(investors_investment, investors):
+        plt.bar(project_names, investor_investment, bottom=bottom, label=investor)
+        bottom = [sum(x) for x in zip(bottom, investor_investment)]
+    plt.xlabel('Project Name')
+    plt.ylabel('Total Investment')
+    plt.title('Stacked Bar Chart of Investments per Project')
+    plt.xticks(rotation=45)
+    plt.savefig('stacked_bar_chart.png')  # Save the chart to a file
+    plt.close()  # Close the plot to free memory
+
+def create_line_chart(project_names, current_investments, investment_goals):
+    plt.figure(figsize=(10, 6))
+    plt.plot(project_names, current_investments, label='Current Investment', marker='o')
+    plt.plot(project_names, investment_goals, label='Investment Goal', marker='x')
+    plt.xlabel('Project Name')
+    plt.ylabel('Amount')
+    plt.title('Line Chart of Project Progress')
+    plt.xticks(rotation=45)
+    plt.savefig('line_chart.png')
+    plt.show()

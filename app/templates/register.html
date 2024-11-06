@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration and Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+  <style>
+    html {
+      background-image: url("{{ url_for('static', filename='images/agrimage.jpeg') }}");
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loginbg">
+      <div class="box signin">
+        <h2>Already Have an Account?</h2>
+        <button class="signinbtn">Sign in</button>
+      </div>
+      <div class="box signup">
+        <h2>Don't Have an Account?</h2>
+        <button class="signupbtn">Sign up</button>
+      </div>
+    </div>
+    <div class="formbx">
+      <div class="form signinform">
+        <h3>Sign In</h3>
+        <form method="POST" action="/login" id="login-form">
+          {{ login_form.hidden_tag() }}
+          <div>
+            {{ login_form.login_username.label }}<br>
+            {{ login_form.login_username(size=20) }}<br>
+            {% for error in login_form.login_username.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div>
+            {{ login_form.login_password.label }}<br>
+            {{ login_form.login_password(size=20) }}<br>
+            {% for error in login_form.login_password.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div>
+            <input type="submit" value="Login" id="login-submit">
+          </div>
+          <a href="#" class="forgot">Forgot password?</a>
+        </form>
+      </div>
+      <div class="form signupform">
+        <h2>Registration Form</h2>
+        <form method="POST" action="/register">
+          {{ register_form.hidden_tag() }}
+          <div>
+            {{ register_form.username.label }}<br>
+            {{ register_form.username(size=20) }}<br>
+            {% for error in register_form.username.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div>
+            {{ register_form.email.label }}<br>
+            {{ register_form.email(size=20) }}<br>
+            {% for error in register_form.email.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div>
+            {{ register_form.password.label }}<br>
+            {{ register_form.password(size=20) }}<br>
+            {% for error in register_form.password.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div>
+            {{ register_form.confirm_password.label }}<br>
+            {{ register_form.confirm_password(size=20) }}<br>
+            {% for error in register_form.confirm_password.errors %}
+              <span style="color: green;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <input type="hidden" name="user_type" value="{{ user_type }}">
+          <div>
+            <input type="submit" value="Sign Up">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+
+    const signinbtn = document.querySelector('.signinbtn');
+    const signupbtn = document.querySelector('.signupbtn');
+    const formbx = document.querySelector('.formbx');
+    const body = document.querySelector('body');
+
+    signupbtn.onclick = function() {
+      formbx.classList.add('active');
+      body.classList.add('active');
+    };
+    signinbtn.onclick = function() {
+      formbx.classList.remove('active');
+      body.classList.remove('active');
+    };
+
+    const loginForm = document.getElementById('login-form');
+    const loginSubmit = document.getElementById('login-submit');
+
+    loginSubmit.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+  // Extract form data
+    const formData = new FormData(loginForm);
+
+  // Send a POST request to your Flask backend
+    fetch('/login', {
+      method: 'POST',
+      body: formData  // Send form data instead of JSON
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        window.location.href = data.redirect_url + '?username=' + data.username; // Redirect to admin page
+      } else {
+        alert(data.message || 'Login failed. Please check your credentials.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+      });
+    });
+
+  </script>
+
+</body>
+</html>

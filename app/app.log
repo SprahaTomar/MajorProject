@@ -1,0 +1,21 @@
+# Example of setting up error logging in Flask
+
+import logging
+from logging.handlers import RotatingFileHandler
+
+# Create a file handler
+file_handler = RotatingFileHandler('app.log', maxBytes=10240, backupCount=10)
+file_handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+))
+
+# Add the file handler to the app's logger
+file_handler.setLevel(logging.INFO)
+app.logger.addHandler(file_handler)
+
+# Example of logging an error
+try:
+    # Database operation
+    db.session.commit()
+except Exception as e:
+    app.logger.error('An error occurred: %s', str(e))

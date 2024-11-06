@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriGrow Invest Investor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/investor.css') }}">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="./images/agrigrow logo.jpeg" alt="AgriGrow Invest Logo" class="logo">
+      <h1 class="admin-text">Investor</h1>
+      <nav class="admin-functionalities">
+        <ul>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#wallet">Wallet</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h2>DASHBOARD</h2>
+    <div class="dashboard-content">
+      <p>Welcome to your AgriGrow Invest dashboard! 
+        Here you will find an overview of your investments and performance.</p>
+    </div>
+    <div class="summary-container">  <section id="total-invested" style="display: block;">
+        <h2>Total Invested</h2>
+        <p id="total-invested-amount">Placeholder: ₹0.00</p>
+      </section>
+      <section id="total-profit-share" style="display: block;">
+        <h2>Total Profit Share</h2>
+        <p id="total-profit-share-amount">Placeholder: ₹0.00</p>
+      </section>
+      <section id="total-profit-share" style="display: block;">
+        <h2>Total Profit</h2>
+        <p id="total-profit-share-amount">Placeholder: ₹0.00</p>
+      </section>
+    </div>
+    <div class="summary-container2">
+      <section id="total-wallet" style="display: block;">
+        <h2>Wallet</h2>
+        <p>Content for your wallet section...</p>
+      </section>
+      <section id="total-wallet" style="display: block;">
+        <h2>Remaning Payout</h2>
+        <p>Placeholder: ₹0.00</p>
+      </section>
+      <section id="total-wallet" style="display: block;">
+        <h2>Next payout</h2>
+        <p>wallet section...</p>
+      </section>
+      <div class="summary-container3">
+      <section id="projects" style="display: none;">
+      <h2>PROJECTS</h2>
+      <table id="project-table">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Investment Goal</th>
+            <th>Amount Invested</th>
+            <th>Return on Investment (ROI)</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody id="project-data">
+        </tbody>
+      </table>
+    </section>
+    </div>
+    <section id="portfolio" style="display: none;">
+      <h2>PORTFOLIO</h2>
+      <div class="portfolio-content">
+        <p>View your investment breakdown and performance details here.</p>
+      </div>
+    </section>
+    <section id="wallet" style="display: none;">
+      <h2>WALLET</h2>
+      <div class="wallet-content">
+        <p>Manage your investment funds and transactions within your wallet.</p>
+      </div>
+    </section>
+    </div>
+  </main>
+  <script src="{{ url_for('static', filename='javaScript/investor.js') }}"></script>
+</body>
+</html>
