@@ -65,15 +65,5 @@ def create_stacked_bar_chart(project_names, investors_investment, investors):
     plt.savefig('stacked_bar_chart.png')
     plt.show()
 
-'''def create_roi_line_chart(investment_dates, roi_values):
-    plt.figure(figsize=(10, 6))
-    plt.plot(investment_dates, roi_values, marker='o')
-    plt.xlabel('Investment Date')
-    plt.ylabel('ROI')
-    plt.title('Line Chart of ROI Over Time')
-    plt.xticks(rotation=45)
-    plt.savefig('roi_line_chart.png')
-    plt.show()'''
-
 # Call the load_data function to execute the chart creation
 load_data()
